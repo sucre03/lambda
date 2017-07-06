@@ -13,7 +13,7 @@ public class Item {
     private int qty;
     private BigDecimal price;
 
-    private Item(String name, int qty, BigDecimal price) {
+    public Item(String name, int qty, BigDecimal price) {
         this.name = name;
         this.qty = qty;
         this.price = price;
@@ -44,5 +44,14 @@ public class Item {
     }
     public static Item getInstance(String name, int qty, BigDecimal price){
         return new Item(name, qty, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", qty=" + qty +
+                ", price=" + price +
+                '}';
     }
 }

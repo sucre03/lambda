@@ -6,7 +6,6 @@ import com.google.common.collect.Maps;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -64,7 +63,11 @@ public class StreamExample {
         System.out.println(counting);
         Map<String,Integer> sum = items.stream()
                 .collect(Collectors.groupingBy(Item::getName,Collectors.summingInt(Item::getQty)));
-        System.out.println(sum);
+        System.out.println("1======:"+sum);
+        Map<BigDecimal,List<Item>> groupByPriceMap = items.stream().collect(Collectors.groupingBy(Item::getPrice));
+        System.out.println("2======:"+groupByPriceMap);
+        Map<BigDecimal,Set<String>> res = items.stream().collect(Collectors.groupingBy(Item::getPrice,Collectors.mapping(Item::getName,Collectors.toSet())));
+        System.out.println("3======:"+res);
     }
 
 
